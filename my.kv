@@ -1,0 +1,243 @@
+#:import utils kivy.utils
+#:import LabelBase kivy.core.text
+#:import MapView kivy.garden.mapview.MapView
+
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    LoginWindow:
+    WelcomeScreen:
+    HomeScreen:
+
+<MainWindow>:
+    name: 'main'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F6C707')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        source:'assets/logo.png'
+
+<SecondWindow>:
+    name: 'Second'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size:root.width,root.height
+        Image:
+            source:'assets/secwinimage.png'
+            pos : (-24.17,146.635)
+            size : (256.66,280.73)
+        MDBoxLayout:
+            size: (196,29)
+            pos: (89,-72.5)
+            MDLabel:
+                text: 'Route Building'
+                color : (0,0,0,1)
+                font_size: 28
+                font_name: "DMSans_med"
+        MDBoxLayout:
+            pos: (25,-115)
+            size: (171.5,22)
+            MDLabel:
+                text: 'Drag the mark to a specific point on the map \n          or enter your street to map routes'
+                color : (0,0,0,0.6)
+                font_size: 16
+                font_name: "DMSans_reg"
+        MDFillRoundFlatButton:
+            pos: (147,117)
+            text: 'Next'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            on_press: root.manager.current='Login'
+
+<LoginWindow>:
+    name:'Login'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size:root.width,root.height
+        MDBoxLayout:
+            size: (147,45)
+            pos: (122,336.5)
+            MDLabel:
+                text: 'BusGo!'
+                color : (0,0,0,1)
+                font_size: 38
+                font_name: "DMSans_med"
+        MDLabel:
+            pos:(22,659)
+            size_hint:None,None
+            size:(105,20)
+            text: 'Phone Number'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos:(21,616)
+            size_hint:None,None
+            size:(334,50)
+            fill_color_normal: utils.get_color_from_hex('#FFFFFF')
+            line_color_focus: utils.get_color_from_hex('#F6C707')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            hint_text:"Enter Phone Number (+91) "
+            mode: "round"
+        MDLabel:
+            pos:(22,558)
+            size_hint:None,None
+            size:(28,20)
+            text: 'OTP'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos:(21,515)
+            size_hint:None,None
+            size:(334,50)
+            hint_text:"Enter OTP"
+            fill_color_normal: utils.get_color_from_hex('#FFFFFF')
+            line_color_focus: utils.get_color_from_hex('#F6C707')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            mode: "round"
+        MDTextButton:
+            size_hint:None,None
+            size:(90,19)
+            pos:(23,463.5)
+            text: "[u]Resend OTP[/u]"
+            markup: True
+        MDFillRoundFlatButton:
+            size_hint:None,None
+            size:(334,65)
+            pos: (135,117)
+            text: 'Continue'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            on_press: root.manager.current='Welcome'
+<WelcomeScreen>:
+    name:'Welcome'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size:root.width,root.height
+        MDBoxLayout:
+            size: (176,48)
+            pos: (100,306)
+            MDLabel:
+                text: 'Welcome!'
+                color : (0,0,0,1)
+                font_size: 40
+                font_name: "DMSans_med"
+        MDLabel:
+            pos:(66,656.5)
+            size_hint:None,None
+            size:(255,31)
+            text: 'Kindly fill in the details'
+            color : (0,0,0,1)
+            font_size: 24
+            font_name: "DMSans_reg"
+        MDLabel:
+            pos:(27,594)
+            size_hint:None,None
+            size:(70,20)
+            text: 'Full Name'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos:(21,553)
+            size_hint:None,None
+            size:(334,50)
+            fill_color_normal: utils.get_color_from_hex('#FFFFFF')
+            line_color_focus: utils.get_color_from_hex('#F6C707')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            hint_text:"Enter Full Name"
+            mode: "round"
+        MDLabel:
+            pos:(27,481)
+            size_hint:None,None
+            size:(85,20)
+            text: 'Roll Number'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos:(21,440)
+            size_hint:None,None
+            size:(334,50)
+            hint_text:"Enter Roll Number"
+            fill_color_normal: utils.get_color_from_hex('#FFFFFF')
+            line_color_focus: utils.get_color_from_hex('#F6C707')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            mode: "round"
+        MDLabel:
+            pos:(27,355)
+            size_hint:None,None
+            size:(55,20)
+            text: 'Gender'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDLabel:
+            pos:(62,329.5)
+            size_hint:None,None
+            size:(33,17)
+            text: 'Male'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDLabel:
+            pos:(136,329.5)
+            size_hint:None,None
+            size:(50,17)
+            text: 'Female'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDCheckbox:
+            size_hint:None,None
+            size:(16,16)
+            pos:(40,330)
+        MDCheckbox:
+            size_hint:None,None
+            size:(16,16)
+            pos:(114,330)
+        MDFillRoundFlatButton:
+            pos: (147,117)
+            text: 'Save'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            on_press: root.manager.current='Home'
+
+<HomeScreen>:
+    name:'Home'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        size:root.width,root.height
+        MapView:
+            lat:17.3344
+            lon:78.4065
+            zoom:16
+
+
