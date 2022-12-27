@@ -2,6 +2,7 @@
 #:import LabelBase kivy.core.text
 #:import MapView kivy.garden.mapview.MapView
 
+
 WindowManager:
     MainWindow:
     SecondWindow:
@@ -12,6 +13,9 @@ WindowManager:
     alertsetupscreen:
     alertsetupwindow:
     menuscreen:
+    profilescreen:
+    buspassscreen:
+
 
 <MainWindow>:
     name: 'main'
@@ -453,17 +457,184 @@ WindowManager:
             size_hint:(1,0.6995)
             pos_hint:{'x':0,'y':0}
             md_bg_color: utils.get_color_from_hex('#F5F8FF')
-        MDBoxLayout:
-            size_hint:(0.856,0.4421)
-            pos_hint:{'center_x':0.5,'center_y':0.42}
-            md_bg_color: utils.get_color_from_hex('#FFFFFF')
+        MDIconButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"close"
+            md_bg_color:utils.get_color_from_hex('#F6C707')
+            icon_color: utils.get_color_from_hex('#000000')
         MDFillRoundFlatIconButton:
-            pos_hint:{'center_x':0.4904,'center_y':0.56}
+            pos_hint:{'center_x':0.4906,'center_y':0.6}
             size_hint:(None,None)
-            size:(267.77,48)
-            text: 'Profile'
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Profile Info'
             text_color: utils.get_color_from_hex('#000000')
             font_size:18
             md_bg_color : utils.get_color_from_hex('#F5F8FF')
-            icon: "pencil"
+            icon: "account"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='profile'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.52}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Bus Pass'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "account"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='buspass'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.44}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Notifications'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "bell"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.36}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Alerts'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "clock-alert"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.28}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Settings'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "cog"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+
+<profilescreen>:
+    name:'profile'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F6C707')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.6995)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F5F8FF')
+        MDIconButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"close"
+            md_bg_color:utils.get_color_from_hex('#F6C707')
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.6}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Email'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "email"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='profile'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.52}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Date of Birth'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "calendar-range"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.44}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Gender'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "human-male-female"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+
+<buspassscreen>:
+    name:'buspass'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F6C707')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.6995)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F5F8FF')
+        MDIconButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"close"
+            md_bg_color:utils.get_color_from_hex('#F6C707')
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.6}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Bus Pass'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "email"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.52}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'ID Number'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "calendar-range"
+            rounded_button:False
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4906,'center_y':0.44}
+            size_hint:(None,None)
+            width:root.width * 1
+            height:root.height * 0.05911
+            text: 'Validity'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "human-male-female"
+            rounded_button:False
             icon_color: utils.get_color_from_hex('#000000')

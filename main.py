@@ -8,8 +8,16 @@ from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
 from kivy_garden.mapview import MapView
+from kivymd.uix.button import MDFillRoundFlatIconButton
+
 
 Window.size = (375, 812)
+
+
+class buspassscreen(MDScreen):
+    pass
+class profilescreen(MDScreen):
+    pass
 
 
 class MainWindow(MDScreen):
