@@ -14,10 +14,26 @@ Window.size = (375, 812)
 
 class MainWindow(MDScreen):
     def on_enter(self, *args):
-        Clock.schedule_once(self.switch_to_home, 5)
+        Clock.schedule_once(self.switch_to_home, 0.5)
 
     def switch_to_home(self, dt):
         self.manager.current = 'Second'
+
+
+class menuscreen(MDScreen):
+    pass
+
+
+class alertsetupwindow(MDScreen):
+    pass
+
+
+class alertsetupscreen(MDScreen):
+    pass
+
+
+class locationsetupwindow(MDScreen):
+    pass
 
 
 class SecondWindow(MDScreen):

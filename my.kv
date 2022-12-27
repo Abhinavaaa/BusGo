@@ -8,6 +8,10 @@ WindowManager:
     LoginWindow:
     WelcomeScreen:
     HomeScreen:
+    locationsetupwindow:
+    alertsetupscreen:
+    alertsetupwindow:
+    menuscreen:
 
 <MainWindow>:
     name: 'main'
@@ -28,30 +32,32 @@ WindowManager:
         Rectangle:
             pos: self.pos
             size: self.size
-    RelativeLayout:
+    FloatLayout:
         size:root.width,root.height
         Image:
             source:'assets/secwinimage.png'
             pos : (-24.17,146.635)
             size : (256.66,280.73)
         MDBoxLayout:
-            size: (196,29)
-            pos: (89,-72.5)
+            size_hint: (0.53,0.0357)
+            pos_hint: {'center_x':0.4986,'center_y': 0.4113}
             MDLabel:
                 text: 'Route Building'
                 color : (0,0,0,1)
+                halign:"center"
                 font_size: 28
                 font_name: "DMSans_med"
         MDBoxLayout:
-            pos: (25,-115)
-            size: (171.5,22)
+            pos_hint: {'center_x':0.484,'center_y':0.3583}
+            size_hint: (0.87,0.0541)
             MDLabel:
-                text: 'Drag the mark to a specific point on the map \n          or enter your street to map routes'
+                text: 'Drag the mark to a specific point on the map \n or enter your street to map routes'
                 color : (0,0,0,0.6)
+                halign:"center"
                 font_size: 16
                 font_name: "DMSans_reg"
         MDFillRoundFlatButton:
-            pos: (147,117)
+            pos_hint: {'center_x':0.5,'center_y':0.1748}
             text: 'Next'
             text_color: utils.get_color_from_hex('#000000')
             font_size:18
@@ -66,7 +72,7 @@ WindowManager:
         Rectangle:
             pos: self.pos
             size: self.size
-    RelativeLayout:
+    FloatLayout:
         size:root.width,root.height
         MDBoxLayout:
             size: (147,45)
@@ -133,7 +139,7 @@ WindowManager:
         Rectangle:
             pos: self.pos
             size: self.size
-    RelativeLayout:
+    FloatLayout:
         size:root.width,root.height
         MDBoxLayout:
             size: (176,48)
@@ -233,11 +239,231 @@ WindowManager:
         Rectangle:
             pos: self.pos
             size: self.size
-    BoxLayout:
-        size:root.width,root.height
-        MapView:
-            lat:17.3344
-            lon:78.4065
-            zoom:16
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.7537)
+            pos_hint:{'x':0,'top':1}
+            MapView:
+                lat:17.3344
+                lon:78.4065
+                zoom:16
+        MDBoxLayout:
+            size_hint:(1,0.2463)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F8FBFF')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.175}
+            text: 'Choose a pickup location'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "map-marker"
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='locationsetup'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.09}
+            text: 'Search your locality'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "magnify"
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"menu"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='menu'
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.792,'y':0.9568}
+            icon:"bell-outline"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+        MDLabel:
+            pos_hint:{'center_x':0.509,'center_y':0.135}
+            size_hint:(0.08,0.0197)
+            text: 'or'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
 
+<locationsetupwindow>:
+    name:'locationsetup'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.7537)
+            pos_hint:{'x':0,'top':1}
+            MapView:
+                lat:17.3344
+                lon:78.4065
+                zoom:16
+        MDBoxLayout:
+            size_hint:(1,0.2463)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F8FBFF')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.175}
+            text: 'Save'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "content-save"
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='alertsetup'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.09}
+            text: 'Cancel'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "close-circle-outline"
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"arrow-left"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
 
+<alertsetupscreen>:
+    name:'alertsetup'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.7537)
+            pos_hint:{'x':0,'top':1}
+            MapView:
+                lat:17.3344
+                lon:78.4065
+                zoom:16
+        MDBoxLayout:
+            size_hint:(1,0.2463)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F8FBFF')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.175}
+            text: 'Create new Alert'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "alert"
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='alertsetupw'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.09}
+            text: 'Edit Pickup Location'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            icon: "pencil"
+            icon_color: utils.get_color_from_hex('#000000')
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"menu"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='menu'
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.792,'y':0.9568}
+            icon:"bell-outline"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+
+<alertsetupwindow>:
+    name:'alertsetupw'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F8FBFF')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.7537)
+            pos_hint:{'x':0,'top':1}
+            MapView:
+                lat:17.3344
+                lon:78.4065
+                zoom:16
+        MDBoxLayout:
+            size_hint:(1,0.2463)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F8FBFF')
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.0746,'y':0.9568}
+            icon:"menu"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+            on_press: root.manager.current='menu'
+        MDFloatingActionButton:
+            size_hint:(0.128,0.05911)
+            pos_hint: {'x':0.792,'y':0.9568}
+            icon:"bell-outline"
+            md_bg_color:utils.get_color_from_hex('F8FBFF')
+            icon_color: utils.get_color_from_hex('#000000')
+        MDLabel:
+            pos_hint:{'center_x':0.53,'center_y':0.2019}
+            size_hint:(0.8426,0.0197)
+            text: 'How Early do you want us to notify you?'
+            color : (0,0,0,1)
+            font_size: 16
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos_hint:{'center_x':0.5013,'center_y':0.1416}
+            size_hint:(0.784,0.069)
+            hint_text:"Enter Time in Minutes"
+            fill_color_normal: utils.get_color_from_hex('#F6C707')
+            line_color_focus: utils.get_color_from_hex('#000000')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            hint_text_color_focus: utils.get_color_from_hex('#000000')
+            mode: "fill"
+        MDFillRoundFlatButton:
+            pos_hint:{'center_x':0.5,'center_y':0.065}
+            text: 'Save'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+
+<menuscreen>:
+    name:'menu'
+    canvas.before:
+        Color:
+            rgb : utils.get_color_from_hex('#F6C707')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        MDBoxLayout:
+            size_hint:(1,0.6995)
+            pos_hint:{'x':0,'y':0}
+            md_bg_color: utils.get_color_from_hex('#F5F8FF')
+        MDBoxLayout:
+            size_hint:(0.856,0.4421)
+            pos_hint:{'center_x':0.5,'center_y':0.42}
+            md_bg_color: utils.get_color_from_hex('#FFFFFF')
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.4904,'center_y':0.56}
+            size_hint:(None,None)
+            size:(267.77,48)
+            text: 'Profile'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F5F8FF')
+            icon: "pencil"
+            icon_color: utils.get_color_from_hex('#000000')
