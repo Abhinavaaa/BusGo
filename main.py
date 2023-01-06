@@ -10,7 +10,6 @@ from kivy.core.text import LabelBase
 from kivy_garden.mapview import MapView
 from kivymd.uix.button import MDFillRoundFlatIconButton
 
-
 Window.size = (375, 812)
 
 

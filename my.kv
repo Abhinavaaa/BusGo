@@ -79,62 +79,83 @@ WindowManager:
     FloatLayout:
         size:root.width,root.height
         MDBoxLayout:
-            size: (147,45)
-            pos: (122,336.5)
+            size_hint:(0.3493,0.0554)
+            pos_hint:{'x':0.336,'y':0.8707}
             MDLabel:
                 text: 'BusGo!'
                 color : (0,0,0,1)
                 font_size: 38
                 font_name: "DMSans_med"
         MDLabel:
-            pos:(22,659)
-            size_hint:None,None
-            size:(105,20)
-            text: 'Phone Number'
+            pos_hint:{'x':0.086,'y':0.7192}
+            size_hint:(0.3,0.0246)
+            text: 'Email Address'
             color : (0,0,0,1)
             font_size: 15
             font_name: "DMSans_reg"
         MDTextField:
-            pos:(21,616)
-            size_hint:None,None
-            size:(334,50)
+            pos_hint:{'center_x':0.4987,'center_y':0.6810}
+            size_hint:(0.8907,0.0615)
             fill_color_normal: utils.get_color_from_hex('#FFFFFF')
             line_color_focus: utils.get_color_from_hex('#F6C707')
             text_color_focus: utils.get_color_from_hex('#1C1C1C')
-            hint_text:"Enter Phone Number (+91) "
+            hint_text:"Enter Email Address"
             mode: "round"
         MDLabel:
-            pos:(22,558)
-            size_hint:None,None
-            size:(28,20)
-            text: 'OTP'
+            pos_hint:{'x':0.086,'y':0.5800}
+            size_hint:(0.2,0.0246)
+            text: 'Password'
             color : (0,0,0,1)
             font_size: 15
             font_name: "DMSans_reg"
         MDTextField:
-            pos:(21,515)
-            size_hint:None,None
-            size:(334,50)
-            hint_text:"Enter OTP"
+            pos_hint:{'center_x':0.4987,'center_y':0.5455}
+            size_hint:(0.8907,0.0615)
+            hint_text:"Enter Password"
+            fill_color_normal: utils.get_color_from_hex('#FFFFFF')
+            line_color_focus: utils.get_color_from_hex('#F6C707')
+            text_color_focus: utils.get_color_from_hex('#1C1C1C')
+            mode: "round"
+        MDFillRoundFlatButton:
+            pos_hint:{'center_x':0.5,'center_y':0.1884}
+            width:root.width * 0.8907
+            height:root.height * 0.0616
+            text: 'Create an account'
+            text_color: utils.get_color_from_hex('#000000')
+            font_size:18
+            md_bg_color : utils.get_color_from_hex('#F6C707')
+            on_press: root.manager.current='Welcome'
+        MDLabel:
+            pos_hint:{'x':0.086,'y':0.4445}
+            size_hint:(0.4,0.0246)
+            text: 'Confirm Password'
+            color : (0,0,0,1)
+            font_size: 15
+            font_name: "DMSans_reg"
+        MDTextField:
+            pos_hint:{'center_x':0.4987,'center_y':0.4101}
+            size_hint:(0.8907,0.0615)
+            hint_text:"Re-enter Password"
             fill_color_normal: utils.get_color_from_hex('#FFFFFF')
             line_color_focus: utils.get_color_from_hex('#F6C707')
             text_color_focus: utils.get_color_from_hex('#1C1C1C')
             mode: "round"
         MDTextButton:
-            size_hint:None,None
-            size:(90,19)
-            pos:(23,463.5)
-            text: "[u]Resend OTP[/u]"
+            pos_hint:{'center_x':0.5,'center_y':0.1114}
+            text: "[u]Login to account[/u]"
+            text_color: utils.get_color_from_hex('#000000')
             markup: True
-        MDFillRoundFlatButton:
-            size_hint:None,None
-            size:(334,65)
-            pos: (135,117)
-            text: 'Continue'
+        MDFillRoundFlatIconButton:
+            pos_hint:{'center_x':0.5,'center_y':0.2746}
+            width:root.width * 0.544
+            height:root.height * 0.0616
+            text: '   Sign-in with Google'
+            markup: True
+            icon:'assets/signup.png'
             text_color: utils.get_color_from_hex('#000000')
             font_size:18
-            md_bg_color : utils.get_color_from_hex('#F6C707')
-            on_press: root.manager.current='Welcome'
+            md_bg_color : utils.get_color_from_hex('#FFFFFF')
+
 <WelcomeScreen>:
     name:'Welcome'
     canvas.before:
@@ -461,6 +482,7 @@ WindowManager:
             size_hint:(0.128,0.05911)
             pos_hint: {'x':0.0746,'y':0.9568}
             icon:"close"
+            on_press: root.manager.current='alertsetup'
             md_bg_color:utils.get_color_from_hex('#F6C707')
             icon_color: utils.get_color_from_hex('#000000')
         MDFillRoundFlatIconButton:
@@ -473,6 +495,7 @@ WindowManager:
             font_size:18
             md_bg_color : utils.get_color_from_hex('#F5F8FF')
             icon: "account"
+
             rounded_button:False
             icon_color: utils.get_color_from_hex('#000000')
             on_press: root.manager.current='profile'
@@ -543,6 +566,7 @@ WindowManager:
             size_hint:(0.128,0.05911)
             pos_hint: {'x':0.0746,'y':0.9568}
             icon:"close"
+            on_press: root.manager.current='menu'
             md_bg_color:utils.get_color_from_hex('#F6C707')
             icon_color: utils.get_color_from_hex('#000000')
         MDFillRoundFlatIconButton:
@@ -600,6 +624,7 @@ WindowManager:
             size_hint:(0.128,0.05911)
             pos_hint: {'x':0.0746,'y':0.9568}
             icon:"close"
+            on_press: root.manager.current='menu'
             md_bg_color:utils.get_color_from_hex('#F6C707')
             icon_color: utils.get_color_from_hex('#000000')
         MDFillRoundFlatIconButton:
